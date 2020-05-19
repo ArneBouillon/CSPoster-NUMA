@@ -1,0 +1,101 @@
+% !TEX root = csposter.tex
+%%
+%% This is `cspostershared.tex', a header file for `csposter.tex' that contains the specification of
+%%   - packages
+%%   - custom commands
+%%   - user defined macro's
+%% Extend this file with your own packages and/or macro's
+
+% the KU Leuven Handbook of Style specifies Helvetica Neue as the standard font
+\DeclareRobustCommand{\helvetica}{%
+	\fontencoding{\encodingdefault}%
+	\fontseries{m}
+	\fontshape{n}
+	\fontfamily{phv}
+	\fontsize{9}{12}
+	\selectfont
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% do not remove any of the following packages
+\usepackage[T1]{fontenc}
+\usepackage{amssymb, amsmath, mathtools}
+	\mathtoolsset{showonlyrefs}
+\usepackage{geometry}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{ pgfplots}
+	\pgfplotsset{compat=newest}
+	\newlength\figureheight
+	\newlength\figurewidth
+\usepackage{tikz}
+	\usetikzlibrary{backgrounds}
+	\usetikzlibrary{calc,shapes,backgrounds,fit,arrows,positioning,decorations.pathmorphing}
+	%\usetikzlibrary{external}
+	%\tikzexternalize[shell escape=-enable-write18,prefix=tikz/]
+\usepackage{hyphenat}
+\usepackage{booktabs}  
+\usepackage{enumitem}
+
+% custom packages go here
+\DeclareMathOperator{\Div}{div}
+\DeclareMathOperator{\Rot}{rot}
+\newcommand{\parder}[2]{\frac{\partial {#1}}{\partial {#2}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CUSTOM COMMANDS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% template short cuts
+\newcommand{\TheTitle}[1]{\def\TheTitle{#1}}
+\newcommand{\TheAuthors}[1]{\def\TheAuthors{#1}}
+\newcommand{\TheEmail}[1]{\def\TheEmail{#1}}
+
+% mathbb
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\mathbb{V}}
+
+% bold symbols
+\newcommand{\bsx}{\boldsymbol{x}}
+\newcommand{\bsy}{\boldsymbol{y}}
+\newcommand{\bst}{\boldsymbol{t}}
+\newcommand{\bsmu}{\boldsymbol{\mu}}
+\newcommand{\bstau}{{\vec{\boldsymbol{\tau}}}}
+\newcommand{\bsell}{{\vec{\boldsymbol{\ell}}}}
+\newcommand{\bsDelta}{{\boldsymbol{\Delta}}}
+\newcommand{\bsdelta}{{\boldsymbol{\delta}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CUSTOM MACROS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% easy tikz
+\newcommand{\includetikz}[1]{%
+	%\tikzexternalenable
+	%\tikzsetnextfilename{#1}%
+	\input{figures/#1.tikz}%
+	%\tikzexternaldisable
+}
+
+% title
+\renewcommand{\title}
+{% the formatting is done here, as the desired font size will depend on the title length
+\spaceskip=1\fontdimen2\font plus 0.5\fontdimen3\font minus \fontdimen4\font % Make larger spaced in the title 
+  \Huge\bfseries{\nohyphens{\TheTitle}}
+}
+
+% author
+\renewcommand{\author}
+{
+\parbox{\textwidth}{
+	\centering
+	\TheAuthors\\
+	\includegraphics[width=0.018\textwidth]{images/email.png} \raisebox{0.006\textwidth}{\TheEmail}\\[\baselineskip]
+}
+}

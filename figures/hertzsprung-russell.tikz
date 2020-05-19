@@ -1,0 +1,99 @@
+\begin{tikzpicture}[scale=0.5, every node/.style={transform shape}]
+  
+  % Luminosity axis
+  \draw (0, 0) -- (0, 11.5);
+ 
+  % Luminosity axis labels
+  \foreach \y in {0, 1, ..., 11}
+  {
+   \newcount\l
+   \l\y\relax
+   \advance \l by -5\relax
+ 
+   % Shift the ticks down a little
+   \draw (0, \y-0.03333) node {---};
+ 
+   % Display 10^0 as 1
+   \ifnum\l = 0
+    \draw (-0.6, \y) node {1};
+   \else
+    \draw (-0.6, \y) node {$10^{\the\l}$};
+   \fi
+  }
+ 
+  % Luminosity arrow
+  \draw [->] (-1.3, 3) -- +(0, 6);
+ 
+  % Luminosity label
+  \draw (-1.8, 6) node [rotate=90] {Luminosity [$L_{\odot}$]};
+ 
+  % Temperature axis
+  \draw (0, 0) -- (12.5, 0);
+ 
+  % Spectral class and temperature labels
+  \foreach \x/\s/\t in {0/O/47000, 2/B/0, 4/A/10000,
+                        6/F/0, 8/G/6000, 10/K/0, 12/M/3000}
+  {
+   % Tick
+   \draw (\x, 0) node {$|$};
+ 
+   % Draw the spectral class
+   \draw (\x, -0.4) node {\s};
+ 
+   % Only show the temperature if valid (not 0)
+   \ifnum\t > 0
+    \draw (\x, -0.9) node {\t};
+   \fi
+  }
+ 
+  % Spectral class and temperature axis arrow
+  \draw [->] (9, -1.5) -- (3, -1.5);
+ 
+  % Spectral class and temperature label
+  \draw (6, -2) node {Spectral class and temperature [K]};
+ 
+  % Instability strip
+  \draw [fill=gray, gray]
+        (2.5, 1) -- (3, 1) -- (8, 9) -- (6, 9) -- (2.5, 1);
+ 
+  % Instability strip label
+  \draw [<-, thick]
+        (4, 3.3) -- +(1, 0) node [right] {Instability Strip};
+ 
+  % Main Sequence strip
+  \draw [line width=0.7cm, yellow]
+        (0.5, 11) .. controls (2, 4) and (10, 6) .. (12, 0.5);
+ 
+  % Main sequence label
+  \draw [<-, thick]
+        (3.5, 6.5) -- +(0, 2) node [above] {Main Sequence};
+ 
+  % Sun
+  \draw [fill=red, red] (6.8, 5)
+        circle [radius=3pt] node [right, black] {\, Sun};
+ 
+  % Supergiants
+  \draw [fill=red, red]
+        (7, 10) circle [x radius=2.5cm, y radius=0.75cm];
+ 
+  % Supergiants label
+  \draw [<-, thick]
+        (8, 10) -- +(2, 0) node [right] {\, Supergiants};
+ 
+  % Giants
+  \draw [fill=orange, orange] (8.5, 7) 
+        circle [rotate=10, x radius=2.5cm, y radius=0.75cm];
+ 
+  % Giants label
+  \draw [<-, thick]
+        (9.5, 7) -- +(0, -1.5) node [below] {\, Giants};
+ 
+  % White dwarfs
+  \draw [fill=cyan, cyan] (2.5, 2.5) 
+        circle [rotate=-45, x radius=2.5cm, y radius=0.75cm];
+ 
+  % White dwarfs label
+  \draw [<-, thick]
+        (2, 3) -- +(0, 2) node [above] {\, White Dwarfs};
+ 
+\end{tikzpicture}
