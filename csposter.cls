@@ -737,7 +737,7 @@ Celestijnenlaan 200A box 2402\\%
   \raggedleft%
 \baposter@font%
 \hspace{.01\paperwidth}
-#2
+\ifthenelse{\equal{#2}{}}{\includegraphics[height=.8\footerheight]{images/NUMA_logo.jpeg}\hspace{1em}}{#2}
   \end{minipage}%
 }
 
