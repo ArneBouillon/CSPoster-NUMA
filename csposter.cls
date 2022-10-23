@@ -898,7 +898,7 @@ Celestijnenlaan 200A box 2402\\%
     % Override the poster-wide defaults on a per-box basis
     \setkeys[ba]{posterbox}{##1}%
 %
-    \def\baposter@box@title{##2}
+    \def\baposter@box@title{{\hspace{-.5cm}##2}}
 %
     \colorlet{borderColor}{\baposter@box@borderColor}
     \colorlet{headerColorOne}{\baposter@box@headerColorOne}
