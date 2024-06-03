@@ -893,6 +893,19 @@ Celestijnenlaan 200A box 2402\\%
     \end{posterbox}
   }
 
+   \newcommand{\whitebox}[3]{%
+    \begin{posterbox}[##2,
+                boxshade=none,
+                boxColorOne=white,
+                borderColor=white,
+                headerColorOne=white,
+                headerBorderColor=white,
+                boxheaderheight=0em,
+                headerFontColor=white]{##1}
+      ##3
+    \end{posterbox}
+  }
+
   \newenvironment{posterbox}[2][]{%
     \debug{Poster box options: ##1}%
     % Override the poster-wide defaults on a per-box basis
