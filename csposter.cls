@@ -729,7 +729,7 @@ Celestijnenlaan 200A box 2402\\%
   \begin{minipage}[b][\footerheight][c]{.33\paperwidth}
   \centering
 \baposter@font%
-	#1~%
+  \ifthenelse{\equal{#1}{}}{\includegraphics[height=.8\footerheight]{images/NUMA_logo.jpeg}\hspace{1em}}{#1}
   \end{minipage}%
 
 	%% FOOTER PART 3 : FUNDING %%
@@ -737,7 +737,7 @@ Celestijnenlaan 200A box 2402\\%
   \raggedleft%
 \baposter@font%
 \hspace{.01\paperwidth}
-\ifthenelse{\equal{#2}{}}{\includegraphics[height=.8\footerheight]{images/NUMA_logo.jpeg}\hspace{1em}}{#2}
+  #2~%
   \end{minipage}%
 }
 
